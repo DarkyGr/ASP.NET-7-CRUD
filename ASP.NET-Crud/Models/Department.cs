@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Crud
+﻿namespace ASP.NET_Crud.Models
 {
     public class Department
     {
