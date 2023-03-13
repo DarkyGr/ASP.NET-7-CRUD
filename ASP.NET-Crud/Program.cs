@@ -1,7 +1,15 @@
+using ASP.NET_Crud.Models;
+using ASP.NET_Crud.Repositories.Contract;
+using ASP.NET_Crud.Repositories.Implementation;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add references of repositories
+builder.Services.AddScoped<IGenericRepository<Department>, DepartmentRepository>();
+builder.Services.AddScoped<IGenericRepository<Employee>, EmployeeRepository>();
 
 var app = builder.Build();
 
