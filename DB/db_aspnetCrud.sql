@@ -44,6 +44,19 @@ begin
 end
 
 create procedure sp_saveEmployee(
+@e_name varchar(50),
+@d_id int,
+@salary int,
+@contract_date varchar(10)
+)
+as
+begin
+	set dateformat dmy
+	insert into employee(e_name, d_id, salary, contract_date) values
+	(@e_name, @d_id, @salary, convert(date, @contract_date))
+end
+
+create procedure sp_editEmployee(
 @e_id int,
 @e_name varchar(50),
 @d_id int,
