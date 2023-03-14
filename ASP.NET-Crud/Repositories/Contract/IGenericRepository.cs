@@ -8,7 +8,7 @@
 
         Task<bool> Edit(T model);
 
-        Task<bool> Delete(T model);
+        Task<bool> Delete(int id);
 
     }
 }
