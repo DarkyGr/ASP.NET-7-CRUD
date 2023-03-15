@@ -70,11 +70,19 @@ document.addEventListener("DOMContentLoaded", function () {
 function ModalShow() {
 
     $("#txtName").val(_employeeModel.name);
-    $("#selectDepartment").val(_employeeModel.departmentRef == 0 ? $("#selectDepartment option:first").val() : _employeeModel.departmentRef)
+    $("#selectDepartment").val(_employeeModel.departmentRef == 0 ? $("#selectDepartment option:first").val() : _employeeModel.departmentRef);
     $("#numSalary").val(_employeeModel.salary);
-    $("#txtContractDate").val(_employeeModel.contractDate)
-
+    $("#txtContractDate").val(_employeeModel.contractDate);
 
     $("#employeeModal").modal("show");
-
 }
+
+$(document).on("click", ".btn-new-employee", function () {
+    _employeeModel.id = 0;
+    _employeeModel.name = "";
+    _employeeModel.departmentRef = 0;
+    _employeeModel.salary = 0;
+    _employeeModel.contractDate = "";
+
+    ModalShow();
+})
