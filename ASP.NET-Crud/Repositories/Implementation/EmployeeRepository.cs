@@ -38,7 +38,7 @@ namespace ASP.NET_Crud.Repositories.Implementation
                                 name = dr["d_name"].ToString()
                             },
                             salary = Convert.ToInt32(dr["salary"]),
-                            contractDate = dr["contract_date"].ToString()
+                            contractDate = dr["contract_date"].ToString(),
                         });
                     }
                 }
@@ -56,7 +56,7 @@ namespace ASP.NET_Crud.Repositories.Implementation
                 
                 // Add parameters whit value
                 cmd.Parameters.AddWithValue("e_name", model.name);
-                cmd.Parameters.AddWithValue("d_id", model.departmentRef);
+                cmd.Parameters.AddWithValue("d_id", model.departmentRef.id);
                 cmd.Parameters.AddWithValue("salry", model.salary);
                 cmd.Parameters.AddWithValue("contract_date", model.contractDate);
 
