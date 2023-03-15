@@ -27,8 +27,8 @@ function EmployeesShow() {
                             $("<td>").text(employee.salary),
                             $("<td>").text(employee.contractDate),
                             $("<td>").append(
-                                $("<button>").addClass("btn btn-primary btn-sm btn-edit-employee").text("Edit").data("dataEmployee", employee),
-                                $("<button>").addClass("btn btn-danger btn-sm ms-2 btn-delete-employee").text("Delete").data("dataEmployee", employee),
+                                $("<button>").addClass("btn btn-primary btn-sm btn-edit-employee").text("Edit").data("employeeData", employee),
+                                $("<button>").addClass("btn btn-danger btn-sm ms-2 btn-delete-employee").text("Delete").data("employeeData", employee),
                             )
                         )
                     )
@@ -79,6 +79,7 @@ function ModalShow() {
 
     $("#employeeModal").modal("show");
 }
+
 // Show modal on button click
 $(document).on("click", ".btn-new-employee", function () {
     _employeeModel.id = 0;
@@ -86,6 +87,19 @@ $(document).on("click", ".btn-new-employee", function () {
     _employeeModel.departmentRef = 0;
     _employeeModel.salary = 0;
     _employeeModel.contractDate = "";
+
+    ModalShow();
+})
+
+// Show modal on button click
+$(document).on("click", ".btn-edit-employee", function () {
+    const _employee = $(this).data("employeeData");
+
+    _employeeModel.id = _employee.id;
+    _employeeModel.name = _employee.name;
+    _employeeModel.departmentRef = _employee.departmentRef.id;
+    _employeeModel.salary = _employee.salary;
+    _employeeModel.contractDate = _employee.contractDate;
 
     ModalShow();
 })
