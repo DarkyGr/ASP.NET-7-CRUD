@@ -38,7 +38,8 @@ namespace ASP.NET_Crud.Repositories.Implementation
             return _list;
         }
 
-        public Task<bool> Delete(Department model)
+
+        public Task<bool> Save(Department model)
         {
             throw new NotImplementedException();
         }
@@ -47,8 +48,8 @@ namespace ASP.NET_Crud.Repositories.Implementation
         {
             throw new NotImplementedException();
         }        
-
-        public Task<bool> Save(Department model)
+        
+        public Task<bool> Delete(int id)
         {
             throw new NotImplementedException();
         }

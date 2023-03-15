@@ -14,12 +14,12 @@ namespace ASP.NET_Crud.Controllers
         private readonly IGenericRepository<Employee> _employeeRepo;
 
         public HomeController(ILogger<HomeController> logger,
-            IGenericRepository<Department> _departmentRepo,
-            IGenericRepository<Employee> _employeeRepo)
+            IGenericRepository<Department> departmentRepository,
+            IGenericRepository<Employee> employeeRepository)
         {
             _logger = logger;
-            _departmentRepo = _departmentRepo;
-            _employeeRepo = _employeeRepo;
+            _departmentRepo = departmentRepository;
+            _employeeRepo = employeeRepository;
         }
 
         public IActionResult Index()

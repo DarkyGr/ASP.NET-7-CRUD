@@ -1,6 +1,7 @@
 using ASP.NET_Crud.Models;
 using ASP.NET_Crud.Repositories.Contract;
 using ASP.NET_Crud.Repositories.Implementation;
+using System.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
