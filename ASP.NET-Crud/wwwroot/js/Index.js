@@ -1,4 +1,4 @@
-﻿
+﻿// Employee Modal
 const _employeeModel = {
     id: 0,
     name: "",
@@ -7,6 +7,7 @@ const _employeeModel = {
     contractDate: ""
 }
 
+// Function to Employess Table
 function EmployeesShow() {
     fetch("/Home/GetListEmployees")
         .then(response => {
@@ -36,6 +37,7 @@ function EmployeesShow() {
         })
 }
 
+// Function to get department name for employee table
 document.addEventListener("DOMContentLoaded", function () {
 
     EmployeesShow();
@@ -67,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 }, false)
 
+// Function to Show modal
 function ModalShow() {
 
     $("#txtName").val(_employeeModel.name);
@@ -76,7 +79,7 @@ function ModalShow() {
 
     $("#employeeModal").modal("show");
 }
-
+// Show modal on button click
 $(document).on("click", ".btn-new-employee", function () {
     _employeeModel.id = 0;
     _employeeModel.name = "";
