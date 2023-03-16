@@ -57,7 +57,7 @@ namespace ASP.NET_Crud.Repositories.Implementation
                 // Add parameters whit value
                 cmd.Parameters.AddWithValue("e_name", model.name);
                 cmd.Parameters.AddWithValue("d_id", model.departmentRef.id);
-                cmd.Parameters.AddWithValue("salry", model.salary);
+                cmd.Parameters.AddWithValue("salary", model.salary);
                 cmd.Parameters.AddWithValue("contract_date", model.contractDate);
 
                 cmd.CommandType = CommandType.StoredProcedure;      // Specify command type
@@ -79,8 +79,8 @@ namespace ASP.NET_Crud.Repositories.Implementation
                 // Add parameters whit value
                 cmd.Parameters.AddWithValue("e_id", model.id);
                 cmd.Parameters.AddWithValue("e_name", model.name);
-                cmd.Parameters.AddWithValue("d_id", model.departmentRef);
-                cmd.Parameters.AddWithValue("salry", model.salary);
+                cmd.Parameters.AddWithValue("d_id", model.departmentRef.id);
+                cmd.Parameters.AddWithValue("salary", model.salary);
                 cmd.Parameters.AddWithValue("contract_date", model.contractDate);
 
                 cmd.CommandType = CommandType.StoredProcedure;      // Specify command type

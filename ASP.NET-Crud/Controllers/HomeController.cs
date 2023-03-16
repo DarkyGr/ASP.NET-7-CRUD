@@ -50,14 +50,14 @@ namespace ASP.NET_Crud.Controllers
         public async Task<IActionResult> SaveEmployee([FromBody] Employee model)
         {
 
-            bool result = await _employeeRepo.Save(model);
+            bool _result = await _employeeRepo.Save(model);
 
-            if (result) {
-                return StatusCode(StatusCodes.Status200OK, new { value = result, msg = "ok" });
+            if (_result) {
+                return StatusCode(StatusCodes.Status200OK, new { value = _result, msg = "ok" });
             }
             else
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { value = result, msg = "error" });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { value = _result, msg = "error" });
             }            
         }
 
@@ -66,15 +66,15 @@ namespace ASP.NET_Crud.Controllers
         public async Task<IActionResult> EditEmployee([FromBody] Employee model)
         {
 
-            bool result = await _employeeRepo.Edit(model);
+            bool _result = await _employeeRepo.Edit(model);
 
-            if (result)
+            if (_result)
             {
-                return StatusCode(StatusCodes.Status200OK, new { value = result, msg = "ok" });
+                return StatusCode(StatusCodes.Status200OK, new { value = _result, msg = "ok" });
             }
             else
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { value = result, msg = "error" });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { value = _result, msg = "error" });
             }
         }
 
@@ -83,15 +83,15 @@ namespace ASP.NET_Crud.Controllers
         public async Task<IActionResult> DeleteEmployee(int idEmployee)
         {
 
-            bool result = await _employeeRepo.Delete(idEmployee);
+            bool _result = await _employeeRepo.Delete(idEmployee);
 
-            if (result)
+            if (_result)
             {
-                return StatusCode(StatusCodes.Status200OK, new { value = result, msg = "ok" });
+                return StatusCode(StatusCodes.Status200OK, new { value = _result, msg = "ok" });
             }
             else
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { value = result, msg = "error" });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { value = _result, msg = "error" });
             }
         }
 
