@@ -160,3 +160,40 @@ $(document).on("click", ".btn-save-changes", function () {
             })
     }
 })
+
+// Show alert delete employee on button click
+$(document).on("click", ".btn-delete-employee", function () {
+
+    const _employee = $(this).data("employeeData");
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: `Delete employee "${_employee.name}"`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, back"
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+
+            fetch(`/Home/DeleteEmployee?idEmployee=${_employee.id}`, {
+                method: "DELETE"
+            })
+                .then(response => {
+                    return response.ok ? response.json() : Promise.reject(response)
+                })
+                .then(responseJson => {                    
+                    if (responseJson.value) {
+                        Swal.fire("Done!", "The employee has be deleted", "success");
+                        EmployeesShow();
+                    }
+                    else {
+                        Swal.fire("Error!", "The employee could not be edited", "error");
+                    }
+                })
+        }
+    })
+})
