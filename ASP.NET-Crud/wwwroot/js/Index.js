@@ -80,7 +80,7 @@ function ModalShow() {
     $("#employeeModal").modal("show");
 }
 
-// Show modal on button click
+// Show new employee modal on button click
 $(document).on("click", ".btn-new-employee", function () {
     _employeeModel.id = 0;
     _employeeModel.name = "";
@@ -91,7 +91,7 @@ $(document).on("click", ".btn-new-employee", function () {
     ModalShow();
 })
 
-// Show modal on button click
+// Show edit employee modal on button click
 $(document).on("click", ".btn-edit-employee", function () {
     const _employee = $(this).data("employeeData");
 
@@ -102,4 +102,61 @@ $(document).on("click", ".btn-edit-employee", function () {
     _employeeModel.contractDate = _employee.contractDate;
 
     ModalShow();
+})
+
+
+// Action for Save and Edit employee
+$(document).on("click", ".btn-save-changes", function () {
+
+    const model = {
+        id: _employeeModel.id,
+        name: $("#txtName").val(),
+        departmentRef: {
+            id: $("#selectDepartment").val()
+        },
+        salary: $("#numSalary").val(),
+        contractDate: $("#txtContractDate").val()
+    }
+
+    // To Save
+    if (_employeeModel.id == 0) {
+
+        fetch("/Home/SaveEmployee", {
+            method: "POST",
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+            body: JSON.stringify(model)
+        })
+            .then(response => {
+                return response.ok ? response.json() : Promise.reject(response);
+            })
+            .then(responseJson => {                
+                if (responseJson.value) {
+                    $("#employeeModal").modal("hide");
+                    Swal.fire("Done!", "The employee was created successfully", "success");
+                    EmployeesShow();
+                } else {
+                    Swal.fire("Error!", "The employee could not be created", "error");
+                }
+            })
+    } else {    // To Edit
+
+        console.log(_employeeModel.id);
+        fetch("/Home/EditEmployee", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+            body: JSON.stringify(model)
+        })
+            .then(response => {
+                return response.ok ? response.json() : Promise.reject(response)
+            })
+            .then(responseJson => {                
+                if (responseJson.value) {
+                    $("#employeeModal").modal("hide");
+                    Swal.fire("Done", "The employee was edited successfully", "success");
+                    EmployeesShow();
+                } else {
+                    Swal.fire("Error", "The user employee not be edited", "error");
+                }
+            })
+    }
 })
