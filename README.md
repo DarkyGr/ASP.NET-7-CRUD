@@ -1,4 +1,4 @@
-# ASP.NET Core 7 (MVC) - CRUD
+# ASP.NET Core 7 (MVC) - CRUD (Without Entity Framework)
 
 This applcation was made with:
 - ASP.NET Core 7 (MVC)
